@@ -32,7 +32,7 @@ then:
 $ cd milo
 ```
 
-into this repo, and clone the repo inside the folder
+and clone the repo inside the folder
 
 ```
 $ git clone ...
