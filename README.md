@@ -72,6 +72,74 @@ pip freeze
 To see what did install in your environment
 
 
+### Flask and SQL Alchemy Database Setup
+
+------------------------------------------
+
+Pull down the latest changes from github using 
+
+```
+$ git pull
+```
+
+Open up two terminal windows/tabs
+In one of the terminal windows/tabs type in:
+
+```
+$ python milo.py
+```
+This will launch the server on localhost:5000 in your browser (or 127.0.0.1:5000, it's the same thing) However you will most likely get an Internal Server Error! It's time to setup the database
+
+In the other window/tab launch the Python interpretter
+
+```
+$ python
+```
+Your terminal will now change to the Python interpretter that looks like this
+
+```
+>>>
+```
+
+Now Let's setup the database by typing in these commands:
+
+```
+>>> from milo import db
+>>> db.create_all()
+```
+What this does is create all the tables within the database, although they are empty, they are at least created.
+
+
+At the moment Users are in here just to play around with the interpretter and database, it will be deleted at a later time, but if you want to practice with the interpretter and the database you can do the following:
+
+If you didn't do the above step you will need to import the db
+
+```
+>>> from milo import db
+>>> from milo import User
+>>> admin = User('admin', 'admin@example.com')
+>>> guest = User('guest', 'guest@example.com')
+>>> db.session.add(admin)
+>>> db.session.add(guest)
+>>> db.session.commit()
+```
+
+If you reload the page on your browser you will now see the users you just added! You can also check within the python interpretter by doing these commands:
+
+```
+>>> users = User.query.all()
+>>> users
+[<User 'admin'>, <User 'guest'>]
+```
+
+You can even do fun things such as:
+
+```
+>>> users[0].username
+'admin'
+```
+
+
 
 ###Misc Stuff
 
